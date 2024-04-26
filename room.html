@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <title>Meet Extra</title>
+  </head>
+  <body>
+    <script>
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+    
+      script.addEventListener("load", function (event) {
+        const url = new URLSearchParams(window.location.search);
+        
+        const config = {
+          name: "",
+          meetingId: url.get("meetingId"),
+          apiKey: "c89d89d9-1dbe-4c9a-bcd0-918950bdade8",
+    
+          containerId: null,
+          redirectOnLeave: null,
+
+          debug: true, // false
+          maxResolution: "hd",
+          
+          micEnabled: true,
+          webcamEnabled: true,
+          participantCanToggleSelfWebcam: true,
+          participantCanToggleSelfMic: true,
+
+          chatEnabled: true,
+          screenShareEnabled: true,
+          pollEnabled: true,
+          whiteboardEnabled: true,
+          raiseHandEnabled: true,
+
+          layout: {
+          type: "SIDEBAR", // "SPOTLIGHT" | "SIDEBAR" | "GRID"
+          priority: "PIN", // "SPEAKER" | "PIN",
+          gridSize: 3,
+          },
+
+          branding: {
+          enabled: true,
+          logoURL:
+            "https://meet-extra.lithicsoft.repl.co/images/favicon.ico",
+          name: "Meet Extra",
+          poweredBy: false,
+          },
+
+          participantCanLeave: true, // if false, leave button won't be visible
+
+          // Live stream meeting to youtube
+          livestream: {
+            autoStart: true,
+            enabled: true,
+          },
+
+          permissions: {
+            askToJoin: false,
+            toggleParticipantWebcam: true,
+            toggleParticipantMic: true,
+            removeParticipant: false, // Remove other participant from meeting
+            endMeeting: false, // End meeting for all participant
+            drawOnWhiteboard: true, // Can Draw on whiteboard
+            toggleWhiteboard: true, // Can toggle whiteboard
+            toggleRecording: true, // Can toggle recording
+            toggleLivestream: true,
+            pin: true,
+          },
+
+          joinScreen: {
+            visible: true, // Show the join screen ?
+            title: url.get("meetingId"), // Meeting title
+            meetingUrl: window.location.href, // Meeting joining url
+          },
+
+          pin: {
+            allowed: true, // participant can pin any participant in meeting
+            layout: "SPOTLIGHT", // meeting layout - GRID | SPOTLIGHT | SIDEBAR
+          },
+
+          leftScreen: {
+          actionButton: {
+          label: "Back Home",
+          href: "https://meet-extra.lithicsoft.repl.co/",
+          },
+          rejoinButtonEnabled: true,
+          },
+        };
+       
+        const meeting = new VideoSDKMeeting();
+        meeting.init(config);
+      });
+    
+      script.src =
+        "https://sdk.videosdk.live/rtc-js-prebuilt/0.3.3/rtc-js-prebuilt.js";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    </script>
+  </body>
+</html>

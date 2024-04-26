@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <script disable-devtool-auto src='https://fastly.jsdelivr.net/npm/disable-devtool/disable-devtool.min.js'></script>
+    <title>Meet Extra</title>
+  </head>
+  <body background="images/wallpaper.webp"> 
+    <script>
+      //Block Web Dev Tools
+      disableDevtool();
+      
+      // Function to create meeting ID
+      function createMeeting() {
+            let meetingId =  'xxxxyxxx'.replace(/[xy]/g, function(c) {
+                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+            window.location.replace("https://"+ "meet-extra.lithicsoft.repl.co" + "/room.html?meetingId="+ meetingId);
+      }
+
+      //for join meeting
+      function joinmtg() {
+            var roomId = document.getElementById('roomId').value
+            window.location.replace("https://"+ "meet-extra.lithicsoft.repl.co" + "/room.html?meetingId="+ roomId);
+      }
+    </script>
+    <div class="topnav">
+    <a class="active"><img src="images/favicon.ico" alt="Logo Header" width="20" height="20" align = "right"></a>
+    <a class="active">Meet Extra</a>
+    </div>
+    <form>
+      <img src="images/favicon.ico" alt="Logo Header" width="300" height="300" align ="right">
+      <h1>Making learning easier than ever</h1>
+      <h4>we designed this app as a way to make online learning easier, more fun, more comfortable, etc.</h4>
+      <h5>Application hosted by Lithicsoft</h5>
+    </form>
+    <form>
+        <nobr><button_room onclick="createMeeting()"><span>New Meeting</span></button_room></nobr>
+        <hbt>|||</hbt>
+        <input type="text" id="roomId">
+        <button_room onclick="joinmtg()"><span>Join</span></button_room>
+   </form>
+  </body>
+</html>
